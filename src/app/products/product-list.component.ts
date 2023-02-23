@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Products} from "./products";
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-product-list',

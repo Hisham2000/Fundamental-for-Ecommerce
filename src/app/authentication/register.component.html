@@ -1,67 +1,119 @@
-<div class="wrapper vh-100">
-  <div class="row align-items-center h-100">
-    <form class="col-lg-6 col-md-8 col-10 mx-auto" [formGroup]="formGroup">
-      <div class="mx-auto text-center my-4">
-        <h2 class="my-3">Register</h2>
-      </div>
-      <div class="form-group">
-        <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" formControlName="email">
-      </div>
-      <div *ngIf="email!.invalid && email!.touched" class="text-center">
-        <p style="color: red" *ngIf="email!.errors?.['required']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-          the email is required field
-        </p>
-        <p style="color: red" *ngIf="email!.errors?.['email']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-          the email is not in valid format
-        </p>
-      </div>
-      <div class="form-group">
-        <div class="form-group">
-          <label for="firstname">Name</label>
-          <input type="text" id="firstname" class="form-control" formControlName="name">
-        </div>
-      </div>
-      <div *ngIf="name!.invalid && name!.touched" class="text-center">
-        <p style="color: red" *ngIf="name!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-          the name is a required field with minimum 6 number of character
-        </p>
-      </div>
-      <hr class="my-4">
-      <div class="row mb-4">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="inputPassword5">New Password</label>
-            <input type="password" class="form-control" id="inputPassword5" formControlName="password">
-          </div>
-          <div *ngIf="password!.invalid && password!.touched" class="text-center">
-            <p style="color: red" *ngIf="password!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-              The password is required and minimum is 9 numbers
-            </p>
-          </div>
-          <div class="form-group">
-            <label for="inputPassword6">Confirm Password</label>
-            <input type="password" class="form-control" id="inputPassword6" formControlName="passwordConfirm">
-          </div>
-          <div *ngIf="confirm!.invalid && confirm!.touched" class="text-center">
-            <p style="color: red" *ngIf="confirm!.value != password!.value"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-              the password and confirm should be matched
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <p class="mb-2">Register requirements</p>
-          <p class="small text-muted mb-2"> To create a new account, you have to meet all of the following requirements: </p>
-          <ul class="small text-muted pl-4 mb-0">
-            <li> Password: Minimum 9 Numbers </li>
-            <li>Name: Minimum 6 character</li>
-            <li>Password And Confirm Password Should ba matched</li>
-            <li>All fields required</li>
-          </ul>
-        </div>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="formGroup.status == 'INVALID'">Sign up</button>
-      <p class="mt-5 mb-3 text-muted text-center">© 2023 Hisham Anwar</p>
-    </form>
+<!--<div class="wrapper vh-100">-->
+<!--  <div class="row align-items-center h-100">-->
+<!--    <form class="col-lg-6 col-md-8 col-10 mx-auto" [formGroup]="formGroup">-->
+<!--      <div class="mx-auto text-center my-4">-->
+<!--        <h2 class="my-3">Register</h2>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <label for="inputEmail4">Email</label>-->
+<!--        <input type="email" class="form-control" id="inputEmail4" formControlName="email">-->
+<!--      </div>-->
+<!--      <div *ngIf="email!.invalid && email!.touched" class="text-center">-->
+<!--        <p style="color: red" *ngIf="email!.errors?.['required']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>-->
+<!--          the email is required field-->
+<!--        </p>-->
+<!--        <p style="color: red" *ngIf="email!.errors?.['email']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>-->
+<!--          the email is not in valid format-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <div class="form-group">-->
+<!--          <label for="firstname">Name</label>-->
+<!--          <input type="text" id="firstname" class="form-control" formControlName="name">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div *ngIf="name!.invalid && name!.touched" class="text-center">-->
+<!--        <p style="color: red" *ngIf="name!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>-->
+<!--          the name is a required field with minimum 6 number of character-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      <hr class="my-4">-->
+<!--      <div class="row mb-4">-->
+<!--        <div class="col-md-6">-->
+<!--          <div class="form-group">-->
+<!--            <label for="inputPassword5">New Password</label>-->
+<!--            <input type="password" class="form-control" id="inputPassword5" formControlName="password">-->
+<!--          </div>-->
+<!--          <div *ngIf="password!.invalid && password!.touched" class="text-center">-->
+<!--            <p style="color: red" *ngIf="password!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>-->
+<!--              The password is required and minimum is 9 numbers-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="inputPassword6">Confirm Password</label>-->
+<!--            <input type="password" class="form-control" id="inputPassword6" formControlName="passwordConfirm">-->
+<!--          </div>-->
+<!--          <div *ngIf="confirm!.invalid && confirm!.touched" class="text-center">-->
+<!--            <p style="color: red" *ngIf="confirm!.value != password!.value"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>-->
+<!--              the password and confirm should be matched-->
+<!--            </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--          <p class="mb-2">Register requirements</p>-->
+<!--          <p class="small text-muted mb-2"> To create a new account, you have to meet all of the following requirements: </p>-->
+<!--          <ul class="small text-muted pl-4 mb-0">-->
+<!--            <li> Password: Minimum 9 Numbers </li>-->
+<!--            <li>Name: Minimum 6 character</li>-->
+<!--            <li>Password And Confirm Password Should ba matched</li>-->
+<!--            <li>All fields required</li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="formGroup.status == 'INVALID'">Sign up</button>-->
+<!--      <p class="mt-5 mb-3 text-muted text-center">© 2023 Hisham Anwar</p>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="wrapper">
+  <div class="logo">
+    <img src="assets/images/avatars/cover.png" alt="">
   </div>
+  <div class="text-center mt-4 name">
+    E-commerce
+  </div>
+  <form class="p-3 mt-3" [formGroup]="formGroup">
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-envelope"></span>
+      <input type="email" formControlName="email" placeholder="Email">
+    </div>
+    <div *ngIf="email!.invalid && email!.touched" class="text-center">
+      <p style="color: #666" *ngIf="email!.errors?.['required']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        the email is required field
+      </p>
+      <p style="color: #666" *ngIf="email!.errors?.['email']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        the email is not in valid format
+      </p>
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-user"></span>
+      <input type="text" formControlName="name" placeholder="Your Name">
+    </div>
+    <div *ngIf="name!.invalid && name!.touched" class="text-center">
+      <p style="color: #666" *ngIf="name!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        the name is a required field with minimum 6 number of character
+      </p>
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-key"></span>
+      <input type="password" placeholder="Password" formControlName="password">
+    </div>
+    <div *ngIf="password!.invalid && password!.touched" class="text-center">
+      <p style="color: #666" *ngIf="password!.errors"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        The password is required and minimum is 9 numbers
+      </p>
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-key"></span>
+      <input type="password" placeholder="Password" formControlName="passwordConfirm">
+    </div>
+    <div *ngIf="confirm!.invalid && confirm!.touched" class="text-center">
+      <p style="color: #666" *ngIf="confirm!.value != password!.value"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        the password and confirm should be matched
+      </p>
+    </div>
+    <button class="btn mt-3" [disabled]="formGroup.status == 'INVALID'" type="submit">Submit</button>
+  </form>
 </div>

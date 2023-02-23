@@ -1,32 +1,28 @@
-<div class="wrapper vh-100">
-  <div class="row align-items-center h-100">
-    <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" [formGroup]="formGroup" (ngSubmit)="submitForm()">
-      <h1 class="h6 mb-3">Login in</h1>
-      <div class="form-group">
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control form-control-lg" placeholder="Email address"
-               autofocus="" formControlName="email">
-      </div>
-      <div class="form-group">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control form-control-lg" placeholder="Password"
-               formControlName="password">
-      </div>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Stay logged in </label>
-      </div>
-      <a [routerLink]="'register'">Create A new account</a>
-      <div *ngIf="emails!.touched && emails!.invalid && formGroup!.invalid">
-        <p class="lead" style="color: red"> <i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>There was an error in your credintial</p>
-      </div>
-
-      <div *ngIf="isValid">
-        <p class="lead" style="color: red"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>Credintial Not Found</p>
-      </div>
-
-      <button *ngIf="formGroup.status == 'VALID'" class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
-      <p class="mt-5 mb-3 text-muted">© 2023 Hisham Anwar</p>
-    </form>
+<div class="wrapper">
+  <div class="logo">
+    <img src="assets/images/avatars/cover.png" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+    E-commerce
+  </div>
+  <form class="p-3 mt-3" [formGroup]="formGroup" (ngSubmit)="submitForm()">
+    <div class="form-field d-flex align-items-center">
+      <span class="far fa-user"></span>
+      <input type="email" name="email" placeholder="Email" formControlName="email">
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fas fa-key"></span>
+      <input type="password" name="password" placeholder="Password" formControlName="password">
+    </div>
+    <div *ngIf="emails!.touched && emails!.invalid && formGroup!.invalid">
+      <p class="small" style="color: #666"> <i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>There was an error in your credintial</p>
+    </div>
+    <div *ngIf="isValid">
+      <p class="small" style="color: #666"><i class="fa fa-exclamation-triangle" aria-hidden="true"> </i>Credintial Not Found</p>
+    </div>
+    <button class="btn mt-3" [disabled]="formGroup.status == 'INVALID'" type="submit">Login</button>
+  </form>
+  <div class="text-center fs-6">
+    <a href="#">Forget password?</a> or <a routerLink="register">Sign up</a>
   </div>
 </div>
