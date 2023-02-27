@@ -1,0 +1,21 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <img class="rounded-circle d-md-block d-none" src="../../../assets/images/avatars/cover.png" width="50px" height="50px">
+  </ng-template>
+  <ng-template pTemplate="end" >
+    <div style="display: inline-block;margin-right: 10px">
+      <img class="rounded-circle" src="../../../assets/images/avatars/face-1.jpg" width="50px">
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="pi pi-user"></span>{{userName}}
+      </button>
+      <div class="dropdown-menu" style="width: 50px">
+        <a class="dropdown-item" [routerLink]="['/user']"><span class="fa fa-address-card"></span> Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()"><span class="fa fa-sign-out"></span> logout</a>
+      </div>
+    </div>
+  </ng-template>
+</p-menubar>

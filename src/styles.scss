@@ -2,3 +2,12 @@
 body{
   overflow-x: hidden;
 }
+
+.p-menuitem-link-active{
+  margin-top: 2px;
+  border-bottom-width: 1px;
+  border-bottom: 2px solid darkgray;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

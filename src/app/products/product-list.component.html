@@ -1,33 +1,67 @@
 <app-navbar></app-navbar>
-<div class="wrapper">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-4" *ngFor="let item of products">
-      <div class="card text-white card-has-bg click-col"
-           style="background-image:url('{{ item.images }}');">
-        <img class="card-img d-none" src="{{ item.images }}"
-             alt="{{item.title}}">
-        <div class="card-img-overlay d-flex flex-column">
-          <div class="card-body">
-            <small class="card-meta mb-2">{{item.title}}</small>
-            <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{item.description}}</a></h4>
-            <small>{{item.category}}</small>
-          </div>
-          <div class="card-footer">
-            <div class="media">
-              <img class="mr-3 rounded-circle" src="https://assets.codepen.io/460692/internal/avatars/users/default.png"
-                   alt="Generic placeholder image" style="max-width:50px">
-              <div class="media-body">
-                <h6 class="my-0 text-white d-block">{{item.brand}}</h6>
+<mat-drawer-container [hasBackdrop]="hasBackdrop.value">
+  <mat-drawer #drawer [mode]="mode.value">
+    <div class="container-fluid" style=" margin-top:15px">
+      <p style="color:#666">Product Name</p>
+      <input class="form-control" [(ngModel)]="searchProductName">
+    </div>
+    <div style="margin: 10px">
+      <p style="color: #666">Start Price From</p>
+      <p-inputNumber [min]="0" [(ngModel)]="startPriceFrom" [showButtons]="true" buttonLayout="horizontal"
+                     inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                     decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                     incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="decimal">
+      </p-inputNumber>
+    </div>
+    <div style="margin: 10px">
+      <p style="color: #666">End Price In</p>
+      <p-inputNumber [min]="0" [(ngModel)]="EndPriceIn" [showButtons]="true" buttonLayout="horizontal"
+                     inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                     decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                     incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="decimal">
+      </p-inputNumber>
+    </div>
+    <div style="margin: 10px">
+      <button class="btn btn-primary btn-block" (click)="seachByPrice()">Price Search</button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-4" *ngFor="let item of filteredProduct"
+             (click)="route.navigate(['products/'+item.id])">
+          <div class="card text-white card-has-bg click-col"
+               style="background-image:url('{{ item.images }}')">
+            <img class="card-img d-none" src="{{ item.images }}"
+                 alt="{{item.title}}">
+            <div class="card-img-overlay d-flex flex-column">
+              <div class="card-body">
+                <small class="card-meta mb-2">{{item.title}}</small>
+                <h4 class="card-title mt-0 "><a class="text-white" herf="#">{{item.description}}</a></h4>
                 <small>{{item.category}}</small>
+              </div>
+              <div class="card-footer">
+                <div class="media">
+                  <img class="mr-3 rounded-circle"
+                       src="https://assets.codepen.io/460692/internal/avatars/users/default.png"
+                       alt="Generic placeholder image" style="max-width:50px">
+                  <div class="media-body">
+                    <h6 class="my-0 text-white d-block">{{item.brand}}</h6>
+                    <small>{{item.category}}</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-  </div>
-</div>
+    <div class="rounded" style="position: fixed; right: 0px; top: 50%">
+      <button style="font-size:20px"
+              mat-raised-button (click)="drawer.toggle()" class="btn btn-primary">
+        <span class="fa fa-bars"></span></button>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
 
 <app-footer></app-footer>

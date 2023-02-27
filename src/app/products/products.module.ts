@@ -3,23 +3,32 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list.component';
 import {MenubarModule} from "primeng/menubar";
-import {NavbarComponent} from "../common/navbar.component";
-import {FooterComponent} from "../common/footer.component";
-
+import {HttpClientModule} from "@angular/common/http";
+import {DropdownModule} from "primeng/dropdown";
+import { ProductDetailsComponent } from './product-details.component';
+import {NavbarModule} from "../common/navbar/navbar.module";
+import {FooterModule} from "../common/footer/footer.module";
+import {InputNumberModule} from "primeng/inputnumber";
+import {FormsModule} from "@angular/forms";
+import {MatSidenavModule} from "@angular/material/sidenav";
 @NgModule({
   declarations: [
     ProductListComponent,
-    NavbarComponent,
-    FooterComponent
+    ProductDetailsComponent,
   ],
   exports: [
-    NavbarComponent,
-    FooterComponent
   ],
-  imports: [
-    CommonModule,
-    ProductsRoutingModule,
-    MenubarModule,
-  ]
+    imports: [
+        CommonModule,
+        ProductsRoutingModule,
+        MenubarModule,
+        HttpClientModule,
+        DropdownModule,
+        NavbarModule,
+        FooterModule,
+        InputNumberModule,
+        FormsModule,
+        MatSidenavModule
+    ]
 })
 export class ProductsModule { }

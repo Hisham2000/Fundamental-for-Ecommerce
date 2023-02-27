@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Products} from "./products";
-import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
+import {ProductsService} from "./products.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -9,94 +9,33 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent{
+  hasBackdrop: any = true;
+  mode: any = "open";
+  private _searchProductName : string = '';
 
-  products: Products[] = [
-    {
-      "id":1,
-      "title": "First",
-      "description": "This is the product",
-      "stock": 50,
-      "brand": "Apple",
-      "category": "Smart Phones",
-      "price": 50,
-      "discountPercentage": 0,
-      "thumbnail": "./assets/images/products/p1.jpg",
-      "rating": 1,
-      "images": ["./assets/images/products/p1.jpg"],
-    },
-    {
-      "id":1,
-      "title": "First",
-      "description": "This is the product",
-      "stock": 50,
-      "brand": "Apple",
-      "category": "Smart Phones",
-      "price": 50,
-      "discountPercentage": 0,
-      "thumbnail": "./assets/images/products/p1.jpg",
-      "rating": 1,
-      "images": ["./assets/images/products/p1.jpg"],
-    },
-    {
-      "id":1,
-      "title": "First",
-      "description": "This is the product",
-      "stock": 50,
-      "brand": "Apple",
-      "category": "Smart Phones",
-      "price": 50,
-      "discountPercentage": 0,
-      "thumbnail": "./assets/images/products/p1.jpg",
-      "rating": 1,
-      "images": ["./assets/images/products/p1.jpg"],
-    },
-    {
-      "id":1,
-      "title": "First",
-      "description": "This is the product",
-      "stock": 50,
-      "brand": "Apple",
-      "category": "Smart Phones",
-      "price": 50,
-      "discountPercentage": 0,
-      "thumbnail": "./assets/images/products/p1.jpg",
-      "rating": 1,
-      "images": ["./assets/images/products/p1.jpg"],
-    },
-    {
-      "id":1,
-      "title": "First",
-      "description": "This is the product",
-      "stock": 50,
-      "brand": "Apple",
-      "category": "Smart Phones",
-      "price": 50,
-      "discountPercentage": 0,
-      "thumbnail": "./assets/images/products/p1.jpg",
-      "rating": 1,
-      "images": ["./assets/images/products/p1.jpg"],
-    },
-  ];
-  errorMessage: string | undefined;
+  startPriceFrom: number = 0;
+  EndPriceIn: number = 0;
 
 
-  imageStatus: boolean = false;
-  showImage: boolean = true;
+  get searchProductName(): string {
+    return this._searchProductName;
+  }
+
+  set searchProductName(value: string) {
+    console.log("we are in teh setter");
+    this._searchProductName = value;
+    this.filteredProduct = this.filteringProduct(value);
+  }
+
+
+  constructor(private http: ProductsService, protected route: Router) {
+    this.products = this.http.getProducts();
+    this.filteredProduct = [...this.products];
+  }
+  products: Products[] = [];
+
 
   filteredProduct: Products[] = [];
-  private _filterInput: string = "";
-
-  get filterInput()
-  {
-    return this._filterInput;
-  }
-
-  set filterInput(value: string)
-  {
-    this._filterInput = value;
-    this.filteredProduct = this.filteringProduct(value);
-    console.log("in setter ",value);
-  }
 
   filteringProduct(filterValue: string): any
   {
@@ -106,10 +45,6 @@ export class ProductListComponent{
 
 
 
-  toggleImage(): void{
-    this.showImage = !this.showImage;
-  }
-
 
   counter(i: number)
   {
@@ -117,8 +52,18 @@ export class ProductListComponent{
   }
 
   ngOnInit(){
-    this.filterInput = "";
+
   }
 
+  seachByPrice() {
+    this.filteredProduct.length = 0;
+    for (let i =0; i < this.products.length; i++)
+    {
+      if(this.products[i].price >= this.startPriceFrom && this.products[i].price <= this.EndPriceIn)
+      {
+        this.filteredProduct.push(this.products[i]);
+      }
+    }
 
+  }
 }

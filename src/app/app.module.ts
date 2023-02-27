@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './notfound.component';
-// import {AccordionModule} from 'primeng/accordion';
-// import {MenuItem} from 'primeng/api';
 import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
-import { AboutComponent } from './about.component';
-import {ProductsModule} from "./products/products.module";
-import { FooterComponent } from './common/footer.component';
+import {AboutComponent} from './about.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NavbarModule} from "./common/navbar/navbar.module";
+import {FooterModule} from "./common/footer/footer.module";
 
 @NgModule({
     declarations: [
@@ -20,9 +17,11 @@ import { FooterComponent } from './common/footer.component';
     ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MenubarModule,
-    ProductsModule,
+    NavbarModule,
+    FooterModule
   ],
     providers: [],
   exports: [

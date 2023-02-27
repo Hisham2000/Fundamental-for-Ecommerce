@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {User} from "./user";
+import {LoginService} from "./login.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent{
   isValid : boolean = false;
 
   formGroup: FormGroup = new FormGroup([]);
-  constructor(private formBuilder: FormBuilder, private router:Router) {
+  constructor(private formBuilder: FormBuilder, private router:Router, private loginService: LoginService) {
     this.formGroup = this.formBuilder.group({
       email: ['',
         [Validators.required,
@@ -27,10 +28,6 @@ export class LoginComponent{
   }
 
 
-
-  users: Array<User> = [
-    {email: "hishamanwar72@gmail.com", UserName: "HishamAnwar", Password: "123456789"}
-  ];
   get emails() {
     return this.formGroup.get('email');
   }
@@ -41,14 +38,8 @@ export class LoginComponent{
   }
 
   submitForm() {
-
-    for(let i=0; i < this.users.length; i++)
-    {
-      if(this.formGroup.get('email')!.value == this.users[i].email && this.formGroup.get('password')!.value == this.users[i].Password)
-      {
-        this.router.navigate(['products']);
-        break;
-      }
+    if(this.loginService.validate(this.formGroup.get('email')!.value, this.formGroup.get('password')!.value)) {
+      this.router.navigate(['/products']);
     }
     this.isValid = true;
   }
