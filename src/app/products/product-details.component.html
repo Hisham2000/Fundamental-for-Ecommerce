@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+
+<div class="container" style="min-height: calc(100vh - 100px); margin-top: 20px">
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-fluid" width="400px" src="{{product.thumbnail}}">
+      <div style="margin-top:20px">
+        <img style="margin-right: 20px" class="img-fluid" width="50px" *ngFor="let item of product.images" src="{{item}}">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4 style="font-weight: bold">{{product.title}}</h4>
+      <p>{{product.category}}</p>
+      <div>
+        <span class="fa fa-star" style="color: gold;" *ngFor="let item of counter(product.rating)"></span>
+      </div>
+      <p class="small disabled">{{product.description}}</p>
+      <div>
+      </div>
+      <div style="margin: 5px 0px">
+        <p-inputNumber [maxlength]="2" [min]="1" [(ngModel)]="val" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="1"
+                       decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="decimal">
+        </p-inputNumber>
+      </div>
+      <div>
+        <p style="font-size: 30px">{{product.price | currency}}</p>
+      </div>
+      <div>
+        <button class="btn" style="background-color: gold; border-color: gold;font-weight: bold; margin: 5px; min-width: 340px">Add To Cart <span class="fa fa-cart-shopping" style="font-size: 22px; padding: 10px"></span>
+        </button>
+        <br>
+        <button class="btn" style="background-color: gold; border-color: gold;font-weight: bold; margin: 5px; min-width: 340px">Add To WishList <span class="fa fa-heart" style="font-size: 22px; padding: 10px"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container rounded" style="background-color: darkgray;">
+  <p class="text-center lead">Reviews</p>
+  <div  class="rounded row" style="background-color: white;">
+    <div class="col-6 row" >
+      <div class="col-3">
+        <img src="./assets/images/avatars/face-1.jpg" class="avatar rounded">
+      </div>
+      <div class="col-9">
+        <p>Hisham Anwar</p>
+        <div>
+          <span class="fa fa-star" style="color: gold"></span>
+        </div>
+        <p class="small" style="color: darkgray">This is my comment on this product</p>
+      </div>
+    </div>
+    <div class="col-6 row" style="background-color: white;">
+      <div class="col-3">
+        <img src="./assets/images/avatars/face-1.jpg" class="avatar rounded">
+      </div>
+      <div class="col-9">
+        <p>Hisham Anwar</p>
+        <div>
+          <span class="fa fa-star" style="color: gold"></span>
+        </div>
+        <p class="small" style="color: darkgray">This is my comment on this product</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
