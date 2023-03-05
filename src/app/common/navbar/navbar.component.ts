@@ -17,7 +17,8 @@ export class NavbarComponent {
 
   items = [
     {label: 'Home', icon: 'pi pi-home', routerLink: '/products'},
-    {label: 'About', icon: 'fa fa-info', routerLink: '/about'}
+    {label: 'About', icon: 'fa fa-info', routerLink: '/about'},
+    {label: 'Flow Chart', icon: 'fa fa-project-diagram', routerLink: '/designer'}
   ];
 
   logout() {

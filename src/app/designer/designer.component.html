@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div>
+
+  <p-splitter [style]="{'height': '89vh'}" [panelSizes]="[20,80]" [minSizes]="[20,0]">
+
+    <ng-template pTemplate>
+      <div class="toolbar">
+        <app-shape
+          *ngFor="let item of tools"
+          style="cursor: pointer"
+          [shape]="item"
+          draggable="true"
+          (dragstart)="saveTheShape(item)"
+        >
+
+        </app-shape>
+      </div>
+    </ng-template>
+
+
+    <ng-template pTemplate>
+      <div class="geometryback" #drawing style="width:100%;"
+           (dragover)="handleDrageOver($event)"
+           (drop)="handleDrop($event, drawing)"
+
+           (mouseup)="handleMouseUp($event)"
+           (mousemove)="handleMouseMove($event)"
+      >
+        <app-shape *ngFor="let item of shapes" [shape]="item" (mousedown)="handleMouseDown($event, item)"></app-shape>
+      </div>
+    </ng-template>
+  </p-splitter>
+
+</div>

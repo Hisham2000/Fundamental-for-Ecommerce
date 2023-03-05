@@ -1,0 +1,18 @@
+<svg *ngIf="shape!.tag == 'rect'"
+     [attr.width]="shape!.width"
+     [attr.height]="shape!.height"
+     [style.top]="shape!.top + 'px'"
+     [style.left]="shape!.left+ 'px'">
+  <rect x="0" y="0" [attr.width]="shape!.width" [attr.height]="shape!.height"
+        style="fill:{{ shape!.color }};"/>
+
+  <text [attr.x]="(shape!.width/2) - 30" [attr.y]="(shape!.height/2)">{{ shape!.label }}</text>
+</svg>
+
+
+<svg [attr.height]="shape!.height" [attr.width]="shape!.width" *ngIf="shape!.tag == 'cirlce'"
+     [style.top]="shape!.top + 'px'"
+     [style.left]="shape!.left+ 'px'"
+>
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" style="fill:{{shape!.color}}"/>
+</svg>
