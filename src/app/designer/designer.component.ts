@@ -8,8 +8,7 @@ import {ShipInfo} from "./ship-info";
 })
 export class DesignerComponent {
   shapes: Array<ShipInfo> = [
-    // {label: "panel1", color: "red", height: 180, width: 400},
-    // {label: "panel2", color: "blue", height: 200, width: 600}
+
   ];
 
   tools : Array<ShipInfo> = [

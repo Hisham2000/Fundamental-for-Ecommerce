@@ -8,6 +8,7 @@ import {AboutComponent} from './about.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavbarModule} from "./common/navbar/navbar.module";
 import {FooterModule} from "./common/footer/footer.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import {FooterModule} from "./common/footer/footer.module";
     AppRoutingModule,
     MenubarModule,
     NavbarModule,
-    FooterModule
+    FooterModule,
+    HttpClientModule
   ],
     providers: [],
   exports: [

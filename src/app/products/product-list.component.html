@@ -31,8 +31,8 @@
         <div class="col-sm-12 col-md-6 col-lg-3 mb-4" *ngFor="let item of filteredProduct"
              (click)="route.navigate(['products/'+item.id])">
           <div class="card text-white card-has-bg click-col"
-               style="background-image:url('{{ item.images }}')">
-            <img class="card-img d-none" src="{{ item.images }}"
+               style="background-image:url('{{ item.thumbnail }}')">
+            <img class="card-img d-none" src="{{ item.thumbnail }}"
                  alt="{{item.title}}">
             <div class="card-img-overlay d-flex flex-column">
               <div class="card-body">

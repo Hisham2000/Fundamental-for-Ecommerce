@@ -7,7 +7,7 @@ import {Products} from "./products";
 })
 export class ProductsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   products: Products[] = [
     {
@@ -81,34 +81,36 @@ export class ProductsService {
   ];
   getProducts()
   {
-    return this.products;
-    // return this.http.get<any>('https://dummyjson.com/products');
+    // return this.products;
+    return this.http.get<any>('https://dummyjson.com/products');
   }
 
-  getSpecificProduct(id: number): Products
+  getSpecificProduct(id: number)
   {
-    let product: Products = {
-      brand: "",
-      category: "",
-      description: "",
-      discountPercentage: 0,
-      id: 0,
-      images: [],
-      price: 0,
-      rating: 0,
-      stock: 0,
-      thumbnail: "",
-      title: ""
-    };
-    for(let item of this.products)
-    {
-      if(item.id == id)
-      {
-        product = item;
-        return product;
-      }
-    }
-    return product;
+  //   let product: Products = {
+  //     brand: "",
+  //     category: "",
+  //     description: "",
+  //     discountPercentage: 0,
+  //     id: 0,
+  //     images: [],
+  //     price: 0,
+  //     rating: 0,
+  //     stock: 0,
+  //     thumbnail: "",
+  //     title: ""
+  //   };
+  //   for(let item of this.products)
+  //   {
+  //     if(item.id == id)
+  //     {
+  //       product = item;
+  //       return product;
+  //     }
+  //   }
+  //   return product;
+
+    return this.http.get('https://dummyjson.com/products/' + id);
   }
 
 }

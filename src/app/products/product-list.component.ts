@@ -29,8 +29,10 @@ export class ProductListComponent{
 
 
   constructor(private http: ProductsService, protected route: Router) {
-    this.products = this.http.getProducts();
-    this.filteredProduct = [...this.products];
+    this.http.getProducts().subscribe((response: any)=>{
+      this.products = response.products;
+      this.filteredProduct = [...this.products];
+    }) ;
   }
   products: Products[] = [];
 

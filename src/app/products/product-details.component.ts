@@ -14,17 +14,19 @@ import {NgModule} from "@angular/core";
 })
 export class ProductDetailsComponent implements OnInit{
   productId = this.route.snapshot.paramMap.get("id")!;
-  product: Products = this.http.getSpecificProduct(Number(this.productId));
+  product: any ;
   val: any = 1;
 
   constructor(private route: ActivatedRoute, private http: ProductsService) {
-
+    this.http.getSpecificProduct(Number(this.productId)).subscribe((response: any)=>{
+      this.product = response;
+    })
   }
   ngOnInit(): void {
   }
 
   counter(i: number)
   {
-    return new Array(i);
+    return new Array(Math.round(i));
   }
 }
